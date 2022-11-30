@@ -75,14 +75,14 @@
           console.log(video.videoWidth);
           // height = (video.videoHeight / video.videoWidth) * video.videoWidth;
           width = video.videoWidth;
-          height = (video.videoWidth * 9) / 19;
+          height = Math.round((video.videoWidth * 16) / 9);
 
           // Firefox currently has a bug where the height can't be read from
           // the video, so we will make assumptions if this happens.
 
           if (isNaN(height)) {
             width = video.videoWidth;
-            height = (video.videoWidth * 9) / 16;
+            height = Math.round((video.videoWidth * 16) / 9);
           }
 
           // video.setAttribute("width", width);
@@ -90,10 +90,10 @@
           canvas.setAttribute("width", width);
           canvas.setAttribute("height", height);
           setFrameCanvas();
-          streaming = true;
           document.getElementById(
             "info"
           ).innerHTML = `cameraW:${width}, cameraH:${height}, windowW:${window.innerWidth}`;
+          streaming = true;
         }
       },
       false
