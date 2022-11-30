@@ -89,6 +89,9 @@
           canvas.setAttribute("height", height);
           setFrameCanvas();
           streaming = true;
+          document.getElementById(
+            "info"
+          ).innerHTML = `cameraW:${width}, cameraH:${width}, windowW:${window.innerWidth}`;
         }
       },
       false
