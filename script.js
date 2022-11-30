@@ -157,8 +157,7 @@
       canvas.width = width;
       canvas.height = height;
 
-      // vidcanvas.drawImage(video, 0, 30, width, width);
-      context.drawImage(video, 0, 100, video.videoWidth, video.videoHeight);
+      context.drawImage(video, 0, 60, video.videoWidth, video.videoHeight);
 
       setTimeout(() => {
         context.drawImage(frameCanvas, 0, 0, width, height);
