@@ -6,6 +6,8 @@
   let width; // We will scale the photo width to this
   let height; // This will be computed based on the input stream
 
+  let photoWidth = 720;
+  let photoHeight = 1280;
   // |streaming| indicates whether or not we're currently streaming
   // video from the camera. Obviously, we start at false.
 
@@ -91,7 +93,7 @@
           streaming = true;
           document.getElementById(
             "info"
-          ).innerHTML = `cameraW:${width}, cameraH:${width}, windowW:${window.innerWidth}`;
+          ).innerHTML = `cameraW:${width}, cameraH:${height}, windowW:${window.innerWidth}`;
         }
       },
       false
