@@ -6,8 +6,6 @@
   let width; // We will scale the photo width to this
   let height; // This will be computed based on the input stream
 
-  let photoWidth = 720;
-  let photoHeight = 1280;
   // |streaming| indicates whether or not we're currently streaming
   // video from the camera. Obviously, we start at false.
 
@@ -72,7 +70,6 @@
       "canplay",
       (ev) => {
         if (!streaming) {
-          console.log(video.videoWidth);
           // height = (video.videoHeight / video.videoWidth) * video.videoWidth;
           width = video.videoWidth;
           height = Math.round((video.videoWidth * 16) / 9);
@@ -85,14 +82,11 @@
             height = Math.round((video.videoWidth * 16) / 9);
           }
 
-          // video.setAttribute("width", width);
-          // video.setAttribute("height", height);
+          video.setAttribute("width", width);
+          video.setAttribute("height", height);
           canvas.setAttribute("width", width);
           canvas.setAttribute("height", height);
           setFrameCanvas();
-          // document.getElementById(
-          //   "info"
-          // ).innerHTML = `cameraW:${width}, cameraH:${height}, windowW:${window.innerWidth}`;
           streaming = true;
         }
       },
@@ -157,7 +151,7 @@
       canvas.width = width;
       canvas.height = height;
 
-      context.drawImage(video, 0, 130, video.videoWidth, video.videoHeight);
+      context.drawImage(video, 0, 0, width, height);
 
       setTimeout(() => {
         context.drawImage(frameCanvas, 0, 0, width, height);
