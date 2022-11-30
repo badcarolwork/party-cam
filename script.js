@@ -90,9 +90,9 @@
           canvas.setAttribute("width", width);
           canvas.setAttribute("height", height);
           setFrameCanvas();
-          document.getElementById(
-            "info"
-          ).innerHTML = `cameraW:${width}, cameraH:${height}, windowW:${window.innerWidth}`;
+          // document.getElementById(
+          //   "info"
+          // ).innerHTML = `cameraW:${width}, cameraH:${height}, windowW:${window.innerWidth}`;
           streaming = true;
         }
       },
@@ -157,7 +157,7 @@
       canvas.width = width;
       canvas.height = height;
 
-      const vidPosY = height - video.videoHeight + 10;
+      const vidPosY = height - video.videoHeight - 20;
 
       context.drawImage(video, 0, vidPosY, video.videoWidth, video.videoHeight);
 
