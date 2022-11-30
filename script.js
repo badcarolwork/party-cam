@@ -57,8 +57,7 @@
 
     navigator.mediaDevices
       .getUserMedia({
-        // video: true,
-        video: { width: 480, height: 853 },
+        video: true,
         audio: false,
       })
       .then((stream) => {
@@ -158,7 +157,7 @@
       canvas.width = width;
       canvas.height = height;
 
-      context.drawImage(video, 0, 60, video.videoWidth, video.videoHeight);
+      context.drawImage(video, 0, 45, video.videoWidth, video.videoHeight);
 
       setTimeout(() => {
         context.drawImage(frameCanvas, 0, 0, width, height);
