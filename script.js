@@ -57,7 +57,8 @@
 
     navigator.mediaDevices
       .getUserMedia({
-        video: true,
+        // video: true,
+        video: { width: 480, height: 853 },
         audio: false,
       })
       .then((stream) => {
