@@ -73,14 +73,14 @@
           console.log(video.videoWidth);
           // height = (video.videoHeight / video.videoWidth) * video.videoWidth;
           width = video.videoWidth;
-          height = (video.videoWidth * 16) / 9;
+          height = (video.videoWidth * 9) / 19;
 
           // Firefox currently has a bug where the height can't be read from
           // the video, so we will make assumptions if this happens.
 
           if (isNaN(height)) {
             width = video.videoWidth;
-            height = (video.videoWidth * 16) / 9;
+            height = (video.videoWidth * 9) / 16;
           }
 
           // video.setAttribute("width", width);
