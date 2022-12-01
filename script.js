@@ -159,12 +159,12 @@
 
       // context.drawImage(video, 0, 80, video.videoWidth, video.videoHeight);
       drawCameraPhoto();
-
+      context.scale(-1, 1);
       setTimeout(() => {
         context.drawImage(
           photoCanvas,
           0,
-          0,
+          80,
           video.videoWidth,
           video.videoHeight
         );
@@ -200,7 +200,6 @@
 
   function drawCameraPhoto() {
     const ctxVid = photoCanvas.getContext("2d");
-    ctxVid.scale(-1, 1);
     photoCanvas.width = video.videoWidth;
     photoCanvas.height = video.videoHeight;
 
