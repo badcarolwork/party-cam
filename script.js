@@ -154,7 +154,11 @@
     if (width && height) {
       canvas.width = width;
       canvas.height = height;
-      const posY = window.innerHeight - video.videoHeight - 100;
+      const posY =
+        video.videoHeight > window.innerHeight
+          ? video.videoHeight - window.innerHeight
+          : window.innerHeight - video.videoHeight;
+
       context.drawImage(video, 0, posY, video.videoWidth, video.videoHeight);
 
       setTimeout(() => {
