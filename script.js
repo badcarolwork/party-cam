@@ -17,6 +17,7 @@
   let video = null;
   let canvas = null;
   let frameCanvas = null;
+  let photoCanvas = null;
   let photo = null;
   let photoData = null;
   let takePhotoBtn = null;
@@ -48,6 +49,7 @@
     video = document.getElementById("video");
     canvas = document.getElementById("canvas");
     frameCanvas = document.getElementById("frameCanvas");
+    photoCanvas = document.getElementById("vidcanvas");
     photo = document.getElementById("photo");
     photoData = photo.getAttribute("src");
     takePhotoBtn = document.getElementById("takePhotoBtn");
@@ -155,13 +157,17 @@
       canvas.width = width;
       canvas.height = height;
 
-      context.drawImage(video, 0, 80, video.videoWidth, video.videoHeight);
+      // context.drawImage(video, 0, 80, video.videoWidth, video.videoHeight);
+      drawCameraPhoto();
 
       setTimeout(() => {
-        context.drawImage(frameCanvas, 0, 0, width, height);
-        const data = canvas.toDataURL("image/png");
-        photo.setAttribute("src", data);
-        showPic(data);
+        context.drawImage(photoCanvas, 0, 0, width, height);
+        setTimeout(() => {
+          context.drawImage(frameCanvas, 0, 0, width, height);
+          const data = canvas.toDataURL("image/png");
+          photo.setAttribute("src", data);
+          showPic(data);
+        }, 500);
       }, 500);
     } else {
       clearphoto();
@@ -184,6 +190,16 @@
     image.onload = function () {
       ctx.drawImage(image, 0, 0, width, height);
     };
+  }
+
+  function drawCameraPhoto() {
+    const ctxVid = photoCanvas.getContext("2d");
+    photoCanvas.width = video.videoWidth;
+    photoCanvas.height = video.videoHeight;
+
+    ctxVid.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
+    const cameraData = photoCanvas.toDataURL("image/png");
+    document.getElementById("vidphoto").setAttribute("src", cameraData);
   }
 
   // Set up our event listener to run the startup process
