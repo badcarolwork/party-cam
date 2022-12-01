@@ -87,6 +87,10 @@
           canvas.setAttribute("width", width);
           canvas.setAttribute("height", height);
           setFrameCanvas();
+
+          document.getElementById(
+            "info"
+          ).innerHTML = `cameraW:${video.videoWidth}, cameraH:${video.videoHeight}, screenH: ${window.innerHeight}`;
           streaming = true;
         }
       },
@@ -150,8 +154,8 @@
     if (width && height) {
       canvas.width = width;
       canvas.height = height;
-
-      context.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
+      const posY = window.innerHeight - video.videoHeight - 100;
+      context.drawImage(video, 0, posY, video.videoWidth, video.videoHeight);
 
       setTimeout(() => {
         context.drawImage(frameCanvas, 0, 0, width, height);
