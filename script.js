@@ -194,6 +194,7 @@
 
   function drawCameraPhoto() {
     const ctxVid = photoCanvas.getContext("2d");
+    ctxVid.scale(-1, 1);
     photoCanvas.width = video.videoWidth;
     photoCanvas.height = video.videoHeight;
 
