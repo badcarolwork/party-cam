@@ -55,7 +55,7 @@
 
     navigator.mediaDevices
       .getUserMedia({
-        video: { width: { ideal: window.innerWidth } },
+        video: true,
         audio: false,
       })
       .then((stream) => {
@@ -154,12 +154,8 @@
     if (width && height) {
       canvas.width = width;
       canvas.height = height;
-      // const posY =
-      //   video.videoHeight > window.innerHeight
-      //     ? video.videoHeight - window.innerHeight
-      //     : window.innerHeight - video.videoHeight;
 
-      context.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
+      context.drawImage(video, 0, 160, video.videoWidth, video.videoHeight);
 
       setTimeout(() => {
         context.drawImage(frameCanvas, 0, 0, width, height);
