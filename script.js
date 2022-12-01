@@ -159,7 +159,6 @@
 
       // context.drawImage(video, 0, 80, video.videoWidth, video.videoHeight);
       drawCameraPhoto();
-      context.scale(-1, 1);
       setTimeout(() => {
         context.drawImage(
           photoCanvas,
@@ -180,10 +179,13 @@
     }
   }
 
-  function showPic(url) {
-    downloadbutton.style.display = "block";
-    outputPhoto.style.display = "block";
-    outputPhoto.style.zIndex = 99;
+  function showPic() {
+    if (photo.src !== "" || photo.src !== null) {
+      downloadbutton.style.display = "block";
+      outputPhoto.style.display = "block";
+      outputPhoto.style.zIndex = 99;
+      document.querySelector(".camera").style.display = "none";
+    }
   }
 
   function setFrameCanvas() {
@@ -202,7 +204,8 @@
     const ctxVid = photoCanvas.getContext("2d");
     photoCanvas.width = video.videoWidth;
     photoCanvas.height = video.videoHeight;
-
+    ctxVid.translate(video.videoWidth, 0);
+    ctxVid.scale(-1, 1);
     ctxVid.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
     const cameraData = photoCanvas.toDataURL("image/png");
     document.getElementById("vidphoto").setAttribute("src", cameraData);
