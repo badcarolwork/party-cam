@@ -161,7 +161,13 @@
       drawCameraPhoto();
 
       setTimeout(() => {
-        context.drawImage(photoCanvas, 0, 0, width, height);
+        context.drawImage(
+          photoCanvas,
+          0,
+          0,
+          video.videoWidth,
+          video.videoHeight
+        );
         setTimeout(() => {
           context.drawImage(frameCanvas, 0, 0, width, height);
           const data = canvas.toDataURL("image/png");
@@ -205,6 +211,4 @@
 
   // Set up our event listener to run the startup process
   startCamera.addEventListener("click", startup, false);
-
-  // window.addEventListener("load", startup, false);
 })();
