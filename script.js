@@ -52,7 +52,7 @@
     photoCanvas = document.getElementById("vidcanvas");
     photo = document.getElementById("photo");
     photoData = photo.getAttribute("src");
-    takePhotoBtn = document.getElementById("takePhotoBtn");
+    // takePhotoBtn = document.getElementById("takePhotoBtn");
     downloadbutton = document.getElementById("picDownload");
 
     navigator.mediaDevices
@@ -89,24 +89,19 @@
           canvas.setAttribute("width", width);
           canvas.setAttribute("height", height);
           setFrameCanvas();
-
-          document.getElementById(
-            "info"
-          ).innerHTML = `cameraW:${video.videoWidth}, cameraH:${video.videoHeight}, screenH: ${window.innerHeight}`;
-          streaming = true;
         }
       },
       false
     );
 
-    takePhotoBtn.addEventListener(
-      "click",
-      (ev) => {
-        takepicture();
-        ev.preventDefault();
-      },
-      false
-    );
+    // takePhotoBtn.addEventListener(
+    //   "click",
+    //   (ev) => {
+    //     takepicture();
+    //     ev.preventDefault();
+    //   },
+    //   false
+    // );
 
     downloadbutton.addEventListener(
       "click",
@@ -157,7 +152,6 @@
       canvas.width = width;
       canvas.height = height;
 
-      // context.drawImage(video, 0, 80, video.videoWidth, video.videoHeight);
       drawCameraPhoto();
       setTimeout(() => {
         context.drawImage(
