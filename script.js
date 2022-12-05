@@ -20,9 +20,6 @@ let downloadbutton = null;
 let defaultFrame = document.querySelector(".default");
 let outputPhoto = document.querySelector(".output");
 
-function checkIfAdKitReady(event) {
-  adkit.onReady(startAd);
-}
 function startAd() {
   if (showViewLiveResultButton()) {
     return;
@@ -35,7 +32,7 @@ function startAd() {
   photoCanvas = document.getElementById("vidcanvas");
   photo = document.getElementById("photo");
   photoData = photo.getAttribute("src");
-  // takePhotoBtn = document.getElementById("takePhotoBtn");
+  takePhotoBtn = document.getElementById("takePhotoBtn");
   downloadbutton = document.getElementById("picDownload");
 
   navigator.mediaDevices
@@ -77,14 +74,14 @@ function startAd() {
     false
   );
 
-  // takePhotoBtn.addEventListener(
-  //   "click",
-  //   (ev) => {
-  //     takepicture();
-  //     ev.preventDefault();
-  //   },
-  //   false
-  // );
+  takePhotoBtn.addEventListener(
+    "click",
+    (ev) => {
+      takepicture();
+      ev.preventDefault();
+    },
+    false
+  );
 
   downloadbutton.addEventListener(
     "click",
@@ -96,7 +93,7 @@ function startAd() {
     false
   );
 
-  startCamera.addEventListener("click", startup, false);
+  // startCamera.addEventListener("click", startAd, false);
 
   clearphoto();
 }
@@ -208,4 +205,4 @@ function drawCameraPhoto() {
 
 // Set up our event listener to run the startup process
 
-window.addEventListener("load", checkIfAdKitReady);
+startCamera.addEventListener("click", startAd, false);
